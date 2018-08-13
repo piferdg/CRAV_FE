@@ -1,0 +1,19 @@
+{
+  "name": "crave_fe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piferdg/CRAV_FE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piferdg/CRAV_FE/issues"
+  },
+  "homepage": "https://github.com/piferdg/CRAV_FE#readme"
+}
