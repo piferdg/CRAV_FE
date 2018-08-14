@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <h3>Find a resturant by selecting a food genre!</h3>
+    <h3>Find a restaurant by selecting a food genre!</h3>
     <!-- <form> -->
     <select v-model="selected">
       <option :value= null></option>
-      <option v-for= 'genre in genreList'>{{genre}}</option>
+      <option v-for='genre in genreList' :key='genre'>{{genre}}</option>
     </select>
-    <BasicCard v-for= "resturant in queriedResturants" :resturantName= 'resturant' :key= 'resturant'/> 
-    <!-- <button v-on:click= getResturantByGenre>Submit</button> -->
-    <!-- </form> -->
+
+    <BasicCard v-for="restaurant in queriedRestaurants" :restaurantName='restaurant' :key='restaurant'/> 
+
   </div>
 </template>
 
@@ -28,9 +28,9 @@ export default {
       apiUrl: "",
       currentGenre: "",
       genreList: [],
-      queriedResturants: [],
+      queriedRestaurants: [],
       queriedFoods: [],
-      resturantList: [],
+      restaurantList: [],
       foodList: [], 
     };
   },
@@ -42,7 +42,8 @@ export default {
       },
       set (optionValue) {
         this.currentGenre = optionValue
-        this.queriedResturants = ['pizza hut', 'McDonalds']
+        this.queriedRestaurants = ['pizza hut', 'McDonalds']
+        console.log(this.queriedRestaurants)
       }
     }
   },
@@ -54,8 +55,8 @@ export default {
     populateFoods() {
       this.foodList = ["tacos", "hamburgers", "pizza", "burritos"];
     },
-    populateResturants() {
-      this.resturantList = [
+    populateRestaurants() {
+      this.restaurantList = [
         "Taco Bell",
         "McDonalds",
         "Fazolis",
@@ -63,17 +64,17 @@ export default {
         "Pizza Hut"
       ];
     },
-    getResturantByGenre(event) {
+    getRestaurantByGenre(event) {
       console.log('CLICK', event)
     },
     getFoodByGenre() {},
-    getFoodByResturant() {}
+    getFoodByRestaurant() {}
   },
 
   mounted() {
     this.populateGenre();
     this.populateFoods();
-    this.populateResturants();
+    this.populateRestaurants();
   }
 };
 </script>
