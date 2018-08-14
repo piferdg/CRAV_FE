@@ -8,6 +8,49 @@
 <script>
 export default {
   name: 'App',
+  components: {
+    // Our app components here
+  },
+
+  data() {
+    return {
+      // this is our 'state', app data
+      apiUrl: '',
+      currentGenre: '',
+      genreList: [],
+      queriedResturants: [],
+      queriedFoods: [],
+      resturantList: [],
+      foodList: [],
+    };
+  },
+
+  methods: {
+    populateGenre() {
+      this.genreList = ['Italian', 'American', 'Mexican'];
+    },
+    populateFoods() {
+      this.foodList = ['tacos', 'hamburgers', 'pizza', 'burritos'];
+    },
+    populateResturants() {
+      this.resturantList = ['Taco Bell', 'McDonalds', 'Fazolis', 'Piccolos', 'Pizza Hut'];
+    },
+    getResturantByGenre() {
+
+    },
+    getFoodByGenre() {
+
+    },
+    getFoodByResturant() {
+
+    },
+  },
+
+  mounted() {
+    this.populateGenre();
+    this.populateFoods();
+    this.populateResturants();
+  },
 };
 </script>
 
