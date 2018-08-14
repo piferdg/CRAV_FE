@@ -1,13 +1,22 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <h3>Find a resturant by selecting a food genre!</h3>
+    <!-- <form> -->
+    <select v-model="selected">
+      <option :value= null></option>
+      <option v-for= 'genre in genreList'>{{genre}}</option>
+    </select>
+    <p v-for="resturant in queriedResturants">{{resturant}}</p>
+    <!-- <button v-on:click= getResturantByGenre>Submit</button> -->
+    <!-- </form> -->
   </div>
 </template>
 
+
 <script>
+import BasicCard from './components/BasicCard'
 export default {
-  name: 'App',
+  name: "App",
   components: {
     // Our app components here
   },
@@ -15,48 +24,62 @@ export default {
   data() {
     return {
       // this is our 'state', app data
-      apiUrl: '',
-      currentGenre: '',
+      apiUrl: "",
+      currentGenre: "",
       genreList: [],
       queriedResturants: [],
       queriedFoods: [],
       resturantList: [],
-      foodList: [],
+      foodList: []
     };
+  },
+
+  computed: {
+    selected: {
+      get () {
+        return null
+      },
+      set (optionValue) {
+        this.currentGenre = optionValue
+        this.queriedResturants = ['pizza hut']
+      }
+    }
   },
 
   methods: {
     populateGenre() {
-      this.genreList = ['Italian', 'American', 'Mexican'];
+      this.genreList = ["Italian", "American", "Mexican"];
     },
     populateFoods() {
-      this.foodList = ['tacos', 'hamburgers', 'pizza', 'burritos'];
+      this.foodList = ["tacos", "hamburgers", "pizza", "burritos"];
     },
     populateResturants() {
-      this.resturantList = ['Taco Bell', 'McDonalds', 'Fazolis', 'Piccolos', 'Pizza Hut'];
+      this.resturantList = [
+        "Taco Bell",
+        "McDonalds",
+        "Fazolis",
+        "Piccolos",
+        "Pizza Hut"
+      ];
     },
-    getResturantByGenre() {
-
+    getResturantByGenre(event) {
+      console.log('CLICK', event)
     },
-    getFoodByGenre() {
-
-    },
-    getFoodByResturant() {
-
-    },
+    getFoodByGenre() {},
+    getFoodByResturant() {}
   },
 
   mounted() {
     this.populateGenre();
     this.populateFoods();
     this.populateResturants();
-  },
+  }
 };
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
