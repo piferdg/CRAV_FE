@@ -6,7 +6,7 @@
       <option :value= null></option>
       <option v-for= 'genre in genreList'>{{genre}}</option>
     </select>
-    <p v-for="resturant in queriedResturants">{{resturant}}</p>
+    <BasicCard v-for= "resturant in queriedResturants" :resturantName= 'resturant' :key= 'resturant'/> 
     <!-- <button v-on:click= getResturantByGenre>Submit</button> -->
     <!-- </form> -->
   </div>
@@ -18,6 +18,7 @@ import BasicCard from './components/BasicCard'
 export default {
   name: "App",
   components: {
+    BasicCard
     // Our app components here
   },
 
@@ -30,7 +31,7 @@ export default {
       queriedResturants: [],
       queriedFoods: [],
       resturantList: [],
-      foodList: []
+      foodList: [], 
     };
   },
 
@@ -41,7 +42,7 @@ export default {
       },
       set (optionValue) {
         this.currentGenre = optionValue
-        this.queriedResturants = ['pizza hut']
+        this.queriedResturants = ['pizza hut', 'McDonalds']
       }
     }
   },

@@ -1,16 +1,19 @@
 <template>
-  <h1>Resturant Name</h1>
+  <div id="app">
+    <h1>Resturant Name is: {{key}}</h1>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'BasicCard'
-}
+  name: "BasicCard"
+};
 props: {
-
+  resturantName: String
+  key: String
 }
+
 </script>
 
 <style>
-
 </style>
