@@ -1,14 +1,15 @@
 <template>
   <div id="app">
+    <p class="logo">CRāV</p>
     <h3>Find a restaurant by selecting a food genre!</h3>
     <!-- <form> -->
     <select v-model="selected">
       <option :value= null></option>
       <option v-for='genre in genreList' :key='genre'>{{genre}}</option>
     </select>
-
-    <BasicCard v-for="restaurant in queriedRestaurants" :restaurantName='restaurant' :key='restaurant'/> 
-
+  <div class="cardList">
+      <BasicCard v-for="restaurant in queriedRestaurants" :restaurantName='restaurant.name' :restaurantAddress='restaurant.address' :key='restaurant'/> 
+  </div>
   </div>
 </template>
 
@@ -42,7 +43,7 @@ export default {
       },
       set (optionValue) {
         this.currentGenre = optionValue
-        this.queriedRestaurants = ['pizza hut', 'McDonalds']
+        this.queriedRestaurants = [{name: 'pizza hut', address:"123 here place"},{name: 'McDonalds', address:"1 way street"}]
         console.log(this.queriedRestaurants)
       }
     }
@@ -87,6 +88,17 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.logo{
+  color: blue;
+  font-size: 50px;
+}
+
+.cardList{
+  display:flex;
+  justify-content: center;
+  margin: 10px;
 }
 </style>
 
