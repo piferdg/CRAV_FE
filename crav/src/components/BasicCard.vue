@@ -1,7 +1,7 @@
 <template>
   <div class="restaurantCard">
-    <h1>Name: {{restaurantName}}</h1>
-    <h2>Address: {{restaurantAddress}}</h2>
+    <h1>{{restaurantName}}</h1>
+    <h2>{{restaurantAddress}}</h2>
         <iframe
             width="250"
             height="250"
@@ -29,7 +29,8 @@
 .restaurantCard{
   border: 1px solid black;
   margin: 5px;
-  background-color: lightgray;
-  width: 300px
+  background-color: white;
+  width: 300px;
+  margin-bottom: 25px;
 }
 </style>
