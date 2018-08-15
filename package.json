@@ -15,5 +15,7 @@
   "bugs": {
     "url": "https://github.com/piferdg/CRAV_FE/issues"
   },
-  "homepage": "https://github.com/piferdg/CRAV_FE#readme"
+  "homepage": "https://github.com/piferdg/CRAV_FE#readme",
+  "dependencies": {},
+  "devDependencies": {}
 }
