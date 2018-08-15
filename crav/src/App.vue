@@ -6,11 +6,11 @@
         <h3>Find a restaurant by selecting a food genre!</h3>   
         <select v-model="selected">
           <option :value= null></option>
-          <option v-for='genre in genreList' :key='genre'>{{genre}}</option>
+          <option v-for='genreObject in genreList.genre' :key='genreObject.id'  v-bind:value="genreObject.id" >{{genreObject.genre}}</option>
         </select>
       </div>
       <div class="cardList">
-        <BasicCard v-for= "restaurant in queriedRestaurants" :restaurantName='restaurant.name' :restaurantAddress='restaurant.address' :key='restaurant'/> 
+        <BasicCard v-for= "restaurant in queriedRestaurants.genre" :restaurantName='restaurant.name' :restaurantAddress='restaurant.address' :key='restaurant'/> 
       </div>
     </div>
     <div class="footer">
@@ -38,11 +38,14 @@ export default {
       currentGenre: "",
       genreList: [],
       queriedRestaurants: [],
-      queriedFoods: [],
-      restaurantList: [],
-      foodList: []
+      restaurantList: []
     };
   },
+
+
+
+
+
 
   computed: {
     selected: {
@@ -51,10 +54,32 @@ export default {
       },
       set(optionValue) {
         this.currentGenre = optionValue;
-        this.queriedRestaurants = [
-          { name: "pizza hut", address: "123 here place" },
-          { name: "McDonalds", address: "1 way street" }
-        ];
+
+
+
+       fetch("https://cors-anywhere.herokuapp.com/https://crav.herokuapp.com/genre/"+optionValue, {
+      method: "get",
+      // mode: "cors",
+      credentials: "same-origin",
+      headers: new Headers({ "Content-Type": "application/json" })
+    })
+      .then(resp => resp.json())
+      .then(resp => {
+        this.queriedRestaurants = resp;
+        console.log(resp);
+      });
+   
+
+
+
+        // this.queriedRestaurants = [
+        //   { name: "pizza hut", address: "123 here place" },
+        //   { name: "McDonalds", address: "1 way street" }
+        // ];
+
+
+
+
         console.log(this.queriedRestaurants);
       }
     }
@@ -62,20 +87,33 @@ export default {
 
   methods: {
     populateGenre() {
-      this.genreList = ["Italian", "American", "Mexican"];
-    },
-    populateFoods() {
-      this.foodList = ["tacos", "hamburgers", "pizza", "burritos"];
-    },
-    populateRestaurants() {
-      this.restaurantList = [
-        "Taco Bell",
-        "McDonalds",
-        "Fazolis",
-        "Piccolos",
-        "Pizza Hut"
-      ];
-    },
+      // this.genreList = ["Italian", "American", "Mexican"];
+   
+   
+       fetch("https://cors-anywhere.herokuapp.com/https://crav.herokuapp.com/genre", {
+      method: "get",
+      // mode: "cors",
+      credentials: "same-origin",
+      headers: new Headers({ "Content-Type": "application/json" })
+    })
+      .then(resp => resp.json())
+      .then(resp => {
+        this.genreList = resp;
+        console.log(resp);
+      });
+   
+   
+   },
+
+    // populateRestaurants() {
+    //   this.restaurantList = [
+    //     "Taco Bell",
+    //     "McDonalds",
+    //     "Fazolis",
+    //     "Piccolos",
+    //     "Pizza Hut"
+    //   ];
+    // },
     getRestaurantByGenre(event) {
       console.log("CLICK", event);
     },
@@ -85,8 +123,7 @@ export default {
 
   mounted() {
     this.populateGenre();
-    this.populateFoods();
-    this.populateRestaurants();
+    // this.populateRestaurants();
   }
 };
 </script>
