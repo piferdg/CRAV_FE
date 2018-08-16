@@ -37,13 +37,11 @@
 <script>
 import BasicCard from "./components/BasicCard";
 import Footer from "./components/Footer";
-import AboutUs from "./components/AboutUs";
 export default {
   name: "App",
   components: {
     BasicCard,
     Footer,
-    AboutUs
   },
 
   data() {
