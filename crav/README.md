@@ -1,6 +1,6 @@
 # crav
 
-> resturant finder for group project
+> A Vue.js project
 
 ## Build Setup
 
