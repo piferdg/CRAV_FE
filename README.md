@@ -1,4 +1,4 @@
-# CRāV - A solution for munchies
+# CRāV - A solution for the munchies.
 
 ## Deployed links: 
   - Frontend - https://crav-5afdb.firebaseapp.com/
