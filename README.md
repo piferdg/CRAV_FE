@@ -3,6 +3,7 @@
 ## Deployed links: 
   - Frontend - https://crav-5afdb.firebaseapp.com/
   - Backend(API) - https://crav.herokuapp.com/
+  - Mobile responsiveness preview - https://www.responsinator.com/?url=https%3A%2F%2Fcrav-5afdb.firebaseapp.com%2F
 
 ## Link to Backend repo: 
   - https://github.com/piferdg/CRAV_BE
