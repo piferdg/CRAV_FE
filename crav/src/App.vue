@@ -49,18 +49,7 @@ export default {
       set(optionValue) {
         this.currentGenre = optionValue;
 
-        fetch(
-          "https://crav.herokuapp.com/genre/" +
-            optionValue,
-          {
-            method: "get",
-            mode: "cors",
-            credentials: "same-origin",
-            headers: new Headers({
-              "Content-Type": "application/json"
-            })
-          }
-        )
+        fetch( "https://crav.herokuapp.com/genre/" + optionValue )
           .then(resp => resp.json())
           .then(resp => {
             this.queriedRestaurants = resp;
@@ -71,17 +60,7 @@ export default {
 
   methods: {
     populateGenre() {
-      fetch(
-        "https://crav.herokuapp.com/genre",
-        {
-          method: "get",
-          mode: "cors",
-          credentials: "same-origin",
-          headers: new Headers({
-            "Content-Type": "application/json"
-          })
-        }
-      )
+      fetch( "https://crav.herokuapp.com/genre" )
         .then(resp => resp.json())
         .then(resp => {
           this.genreList = resp;
@@ -167,4 +146,3 @@ h2 {
   padding: 0;
 }
 </style>
-
