@@ -2,15 +2,23 @@
   <div id="app">
     <div class="main">
       <div class="logo-text">
-        <p class="logo">CRāV</p>
+        <div class="logo">CRāV</div>
         <h3>Find a restaurant by selecting a food genre!</h3>   
-        <select v-model="selected">
-          <option :value= null></option>
-          <option v-for='genreObject in genreList.genre' :key='genreObject.id'  v-bind:value="genreObject.id" >{{genreObject.genre}}</option>
+        <select v-model="selected" :required="true">
+          <option :value= null>Select a genre</option>
+          <option v-for='genreObject in genreList.genre' 
+            v-bind:value="genreObject.id"  
+            :key='genreObject.id'  
+            >{{genreObject.genre}}
+          </option>
         </select>
       </div>
       <div class="cardList">
-        <BasicCard v-for= "restaurant in queriedRestaurants.genre" :restaurantName='restaurant.name' :restaurantAddress='restaurant.address' :key='restaurant'/> 
+        <BasicCard v-for= "restaurant in queriedRestaurants.genre" 
+          :restaurantName='restaurant.name' 
+          :restaurantAddress='restaurant.address' 
+          :phoneNumber='restaurant.phoneNumber' 
+          :key='restaurant.name'/> 
       </div>
     </div>
     <div class="footer">
@@ -28,24 +36,15 @@ export default {
   components: {
     BasicCard,
     Footer
-    // Our app components here
   },
 
   data() {
     return {
-      // this is our 'state', app data
-      apiUrl: "",
       currentGenre: "",
       genreList: [],
-      queriedRestaurants: [],
-      restaurantList: []
+      queriedRestaurants: []
     };
   },
-
-
-
-
-
 
   computed: {
     selected: {
@@ -55,75 +54,38 @@ export default {
       set(optionValue) {
         this.currentGenre = optionValue;
 
-
-
-       fetch("https://cors-anywhere.herokuapp.com/https://crav.herokuapp.com/genre/"+optionValue, {
-      method: "get",
-      // mode: "cors",
-      credentials: "same-origin",
-      headers: new Headers({ "Content-Type": "application/json" })
-    })
-      .then(resp => resp.json())
-      .then(resp => {
-        this.queriedRestaurants = resp;
-        console.log(resp);
-      });
-   
-
-
-
-        // this.queriedRestaurants = [
-        //   { name: "pizza hut", address: "123 here place" },
-        //   { name: "McDonalds", address: "1 way street" }
-        // ];
-
-
-
-
-        console.log(this.queriedRestaurants);
+        fetch("https://cors-anywhere.herokuapp.com/https://crav.herokuapp.com/genre/"+optionValue, {
+          method: "get",
+          // mode: "cors",
+          credentials: "same-origin",
+          headers: new Headers({ "Content-Type": "application/json" })
+        })
+        .then(resp => resp.json())
+        .then(resp => {
+          this.queriedRestaurants = resp;
+        });
       }
     }
   },
 
   methods: {
     populateGenre() {
-      // this.genreList = ["Italian", "American", "Mexican"];
-   
-   
-       fetch("https://cors-anywhere.herokuapp.com/https://crav.herokuapp.com/genre", {
-      method: "get",
-      // mode: "cors",
-      credentials: "same-origin",
-      headers: new Headers({ "Content-Type": "application/json" })
-    })
+      fetch("https://cors-anywhere.herokuapp.com/https://crav.herokuapp.com/genre", {
+        method: "get",
+        // mode: "cors",
+        credentials: "same-origin",
+        headers: new Headers({ "Content-Type": "application/json" })
+      })
       .then(resp => resp.json())
       .then(resp => {
         this.genreList = resp;
         console.log(resp);
       });
-   
-   
-   },
-
-    // populateRestaurants() {
-    //   this.restaurantList = [
-    //     "Taco Bell",
-    //     "McDonalds",
-    //     "Fazolis",
-    //     "Piccolos",
-    //     "Pizza Hut"
-    //   ];
-    // },
-    getRestaurantByGenre(event) {
-      console.log("CLICK", event);
     },
-    getFoodByGenre() {},
-    getFoodByRestaurant() {}
   },
 
   mounted() {
     this.populateGenre();
-    // this.populateRestaurants();
   }
 };
 </script>
@@ -134,8 +96,13 @@ body {
   background-image: url("./assets/background_image.png");
   background-repeat: no-repeat;
   background-size: cover;
-  margin-left: 300px;
-  margin-right: 300px;
+
+  /* margin-left: 280px;
+  margin-right: 280px; */
+
+  margin-left: 10vw;
+  margin-right: 10vw;
+  background-attachment: fixed;
 }
 
 #app {
@@ -144,25 +111,37 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: black;
-  height: 80vw;
+  /* height: 80vw; */
 }
+
 
 .logo {
   color: blue;
   font-size: 50px;
   background: whitesmoke;
   border-radius: 25px;
+
+  text-shadow: 3px 3px 3px #888888;
+  box-shadow:  7px 7px 8px #888888, 7px 7px 8px #888888 inset;
+  font-weight: bolder;
+  border: 5px double blue;
+}
+
+.logo-text{
+  margin: 10px;
+  padding: 10px;    
 }
 
 .main {
-  background: rgb(255, 255, 255, 0.8); 
+  background: rgba(255, 255, 255, 0.699); 
   border-radius: 25px; 
 }
 
 .cardList {
   display: flex;
   justify-content: center;
-  margin: 10px;
+  margin: 5px;
+  flex-wrap: wrap;
 }
 
 .footer {
@@ -171,6 +150,26 @@ body {
   bottom: 0;
   width: 100%;
   color: white;
+
+  background-color: rgba(71, 129, 238, 0.37);
+  font-weight: bolder;
+  padding: 10px;
+  animation: colors 10s infinite;
+}
+
+select {
+  box-shadow: 5px 5px 5px #888888;
+  font-size: larger;
+}
+
+h1{
+  margin: 7px;
+  padding: 0;
+}
+
+h2{
+  margin: 7px;
+  padding: 0;
 }
 
 </style>

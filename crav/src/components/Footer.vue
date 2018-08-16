@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <p>Copyright &copy; 2018 CRaV</p>
-  </div>
+    <div>Copyright &copy; 2018 CRāV</div>
 </template>
 
 <script>
@@ -9,7 +7,3 @@
     name: "Footer"
 }
 </script>
-
-<style>
-
-</style>

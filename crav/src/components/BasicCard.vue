@@ -2,35 +2,52 @@
   <div class="restaurantCard">
     <h1>{{restaurantName}}</h1>
     <h2>{{restaurantAddress}}</h2>
-        <iframe
-            width="250"
-            height="250"
-            frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/view?key=AIzaSyCHy2l3K0UCngroR59ogIe6dYUgcpo_uuc&center=39.7392,-104.9903&zoom=10&maptype=satellite">
-        </iframe>
+    <h2>{{phoneNumber}}</h2>
+    <iframe
+      width="250"
+      height="250"
+      frameborder="50" style="border:5"
+      v-bind:src="'https://www.google.com/maps/embed/v1/place?key=AIzaSyDTfJcR5J2RRCqBnDS571ltEf2KYdao7Uo&q='+restaurantAddress" allowfullscreen>
+    </iframe>
   </div>
 </template>
 
 <script>
-  export default {
-    name: "BasicCard",
-    
-    props: {
-      restaurantName: String,
-      restaurantAddress: String
-    }
+export default {
+  name: "BasicCard",
+  
+  props: {
+    restaurantName: String,
+    restaurantAddress: String,
+    phoneNumber: String,
+  }
 }
-
-
-
 </script>
 
 <style>
 .restaurantCard{
-  border: 1px solid black;
-  margin: 5px;
-  background-color: white;
-  width: 300px;
+  border-top: 1px solid rgb(201, 201, 201);
+  border-bottom: 1px solid rgb(100, 100, 100);
+  border-left: 1px solid rgb(201, 201, 201);
+  border-right: 1px solid rgb(100, 100, 100);
+  margin: 15px;
+  /* background-color: rgb(224, 224, 224); */
+  background: linear-gradient(to bottom right, rgb(235, 244, 255), rgb(192, 220, 255));
+
+  width: 290px;
   margin-bottom: 25px;
+
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 7px 7px 8px #888888, 7px 7px 8px #ffffff inset, -5px -5px 6px #7796b3 inset;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+iframe{
+  align-self:center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 </style>
