@@ -41,6 +41,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-bottom: 80px;
   }
   
   iframe {

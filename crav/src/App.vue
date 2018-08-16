@@ -3,6 +3,7 @@
     <div class="main">
       <div class="logo-text">
         <div class="logo">CRāV</div>
+	      <button v-on:click="collapsed = !collapsed">About Us</button>
         <h3>Find a restaurant by selecting a food genre!</h3>
         <select v-model="selected" :required="true">
             <option :value= null>Select a genre</option>
@@ -17,6 +18,16 @@
         <BasicCard v-for="restaurant in queriedRestaurants.genre" :restaurantName='restaurant.name' :restaurantAddress='restaurant.address' :phoneNumber='restaurant.phoneNumber' :key='restaurant.name' />
       </div>
     </div>
+    <div id="About-us" v-bind:class= "{'is-collapsed' : collapsed }">
+      <h2>Kim Hermosillo</h2>
+        <p>Why do hamburgers go to the gym?..... To get better buns.🏋🏼🍔‍</p>
+      <h2>Danny Pifer</h2>
+        <p>Is a hotdog a sandwich? 🌭 === 🥪?</p>
+      <h2>Michael Coons</h2>
+        <p>I just bought a cured ham, I wonder what it had? 🤒 🐷</p>
+      <h2>Jeff Strunk</h2>
+        <p>What was Ludwig van Beethoven's favorite fruit?... Ba-na-na-na! 🍌🎼</p>
+    </div>
     <div class="footer">
       <Footer />
     </div>
@@ -26,18 +37,21 @@
 <script>
 import BasicCard from "./components/BasicCard";
 import Footer from "./components/Footer";
+import AboutUs from "./components/AboutUs";
 export default {
   name: "App",
   components: {
     BasicCard,
-    Footer
+    Footer,
+    AboutUs
   },
 
   data() {
     return {
       currentGenre: "",
       genreList: [],
-      queriedRestaurants: []
+      queriedRestaurants: [],
+      collapsed: true
     };
   },
 
@@ -49,7 +63,7 @@ export default {
       set(optionValue) {
         this.currentGenre = optionValue;
 
-        fetch( "https://crav.herokuapp.com/genre/" + optionValue )
+        fetch("https://crav.herokuapp.com/genre/" + optionValue)
           .then(resp => resp.json())
           .then(resp => {
             this.queriedRestaurants = resp;
@@ -60,7 +74,7 @@ export default {
 
   methods: {
     populateGenre() {
-      fetch( "https://crav.herokuapp.com/genre" )
+      fetch("https://crav.herokuapp.com/genre")
         .then(resp => resp.json())
         .then(resp => {
           this.genreList = resp;
@@ -144,5 +158,31 @@ h1 {
 h2 {
   margin: 7px;
   padding: 0;
+}
+
+#About-us {
+  border-top: 1px solid rgb(201, 201, 201);
+  border-bottom: 1px solid rgb(100, 100, 100);
+  border-left: 1px solid rgb(201, 201, 201);
+  border-right: 1px solid rgb(100, 100, 100);
+  margin: 15px;
+  background: linear-gradient(
+    to bottom right,
+    rgb(235, 244, 255),
+    rgb(192, 220, 255)
+  );
+  width: 290px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 7px 7px 8px #888888, 7px 7px 8px #ffffff inset,
+    -5px -5px 6px #7796b3 inset;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 80px;
+}
+
+.is-collapsed {
+  display: none;
 }
 </style>
