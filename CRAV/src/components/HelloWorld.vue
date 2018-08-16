@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
+    <li><a href="about.vue" target="_blank">About</a></li>
     <ul>
       <li>
         <a
