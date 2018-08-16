@@ -5,7 +5,7 @@
   - Backend(API) - https://crav.herokuapp.com/
 
 ## Link to Backend repo: 
-  -https://github.com/piferdg/CRAV_BE
+  - https://github.com/piferdg/CRAV_BE
 
 
 ## Problem we are solving with CRāV
