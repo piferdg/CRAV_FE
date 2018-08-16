@@ -31,12 +31,9 @@ export default {
   border-left: 1px solid rgb(201, 201, 201);
   border-right: 1px solid rgb(100, 100, 100);
   margin: 15px;
-  /* background-color: rgb(224, 224, 224); */
   background: linear-gradient(to bottom right, rgb(235, 244, 255), rgb(192, 220, 255));
-
   width: 290px;
   margin-bottom: 25px;
-
   border-radius: 10px;
   padding: 10px;
   box-shadow: 7px 7px 8px #888888, 7px 7px 8px #ffffff inset, -5px -5px 6px #7796b3 inset;
