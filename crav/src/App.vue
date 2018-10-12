@@ -20,13 +20,13 @@
     </div>
     <div id="About-us" v-bind:class= "{'is-collapsed' : collapsed }">
       <h2>Kim Hermosillo</h2>
-        <p>Why do hamburgers go to the gym?..... To get better buns.🏋🏼🍔‍</p>
+        <p>Favorite joke: Why do hamburgers go to the gym?..... To get better buns.🏋🏼🍔‍</p>
       <h2>Danny Pifer</h2>
-        <p>Is a hotdog a sandwich? 🌭 === 🥪?</p>
+        <p>Question that haunts me: Is a hotdog a sandwich? 🌭 === 🥪?</p>
       <h2>Michael Coons</h2>
-        <p>I just bought a cured ham, I wonder what it had? 🤒 🐷</p>
+        <p>Favorite Joke: I just bought a cured ham, I wonder what it had? 🤒 🐷</p>
       <h2>Jeff Strunk</h2>
-        <p>What was Ludwig van Beethoven's favorite fruit?... Ba-na-na-na! 🍌🎼</p>
+        <p>Favorite Joke: What was Ludwig van Beethoven's favorite fruit?... Ba-na-na-na! 🍌🎼</p>
     </div>
     <div class="footer">
       <Footer />
